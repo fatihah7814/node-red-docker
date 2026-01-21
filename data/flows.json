@@ -39,6 +39,21 @@
         "sessionExpiry": ""
     },
     {
+        "id": "9da0661df7586145",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "InfluxDB Local",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://influxdb:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
         "id": "e93b14f74a70e703",
         "type": "inject",
         "z": "d5c84b8e4d61993e",
@@ -52,14 +67,14 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "5",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 220,
+        "x": 230,
         "y": 180,
         "wires": [
             [
@@ -101,7 +116,7 @@
         "correl": "",
         "expiry": "",
         "broker": "4441fc2821740b9a",
-        "x": 570,
+        "x": 590,
         "y": 180,
         "wires": []
     },
@@ -118,16 +133,55 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 830,
-        "y": 180,
+        "x": 770,
+        "y": 260,
         "wires": [
             [
-                "c763f0ce8a4c2d5f"
+                "5261749e3e60fc08"
             ]
         ]
     },
     {
-        "id": "c763f0ce8a4c2d5f",
+        "id": "5261749e3e60fc08",
+        "type": "function",
+        "z": "d5c84b8e4d61993e",
+        "name": "function 2",
+        "func": "const t = msg.payload;   // incoming JSON from MQTT\n\nmsg.measurement = \"temperature\";   // <-- THIS fixes the error\n\nmsg.payload = {\n  sensor_id: t.sensor_id,\n  value: Number(t.temperature),\n  unit: t.unit\n};\n\nmsg.timestamp = t.timestamp; // optional, but good\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 260,
+        "wires": [
+            [
+                "17a126480af42a86",
+                "21f3b9cba690748f"
+            ]
+        ]
+    },
+    {
+        "id": "17a126480af42a86",
+        "type": "influxdb out",
+        "z": "d5c84b8e4d61993e",
+        "influxdb": "9da0661df7586145",
+        "name": "",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "myorg",
+        "bucket": "sensordata",
+        "x": 1180,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "21f3b9cba690748f",
         "type": "debug",
         "z": "d5c84b8e4d61993e",
         "name": "debug 1",
@@ -135,11 +189,12 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1020,
-        "y": 180,
+        "x": 1180,
+        "y": 360,
         "wires": []
     }
 ]
