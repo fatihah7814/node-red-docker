@@ -8,7 +8,38 @@
         "env": []
     },
     {
-        "id": "a0e884ab9e0c2043",
+        "id": "4441fc2821740b9a",
+        "type": "mqtt-broker",
+        "name": "Public MQTT Broker",
+        "broker": "test.mosquitto.org",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e93b14f74a70e703",
         "type": "inject",
         "z": "d5c84b8e4d61993e",
         "name": "",
@@ -21,23 +52,82 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "5",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 240,
+        "x": 230,
         "y": 180,
         "wires": [
             [
-                "14aff7c2e072992e"
+                "c2e437f1863147ad"
             ]
         ]
     },
     {
-        "id": "14aff7c2e072992e",
+        "id": "c2e437f1863147ad",
+        "type": "function",
+        "z": "d5c84b8e4d61993e",
+        "name": "function 1",
+        "func": "msg.payload = {\n    sensor_id: \"TEMP_01\",\n    temperature: (30 + Math.random() * 10).toFixed(2),\n    unit: \"°C\",\n    timestamp: Date.now()\n};\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "019252cb8b3b8f77"
+            ]
+        ]
+    },
+    {
+        "id": "019252cb8b3b8f77",
+        "type": "mqtt out",
+        "z": "d5c84b8e4d61993e",
+        "name": "",
+        "topic": "plant1/area1/temperature",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4441fc2821740b9a",
+        "x": 570,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "51ce02c6b2763693",
+        "type": "mqtt in",
+        "z": "d5c84b8e4d61993e",
+        "name": "",
+        "topic": "plant1/area1/temperature",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "4441fc2821740b9a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 810,
+        "y": 220,
+        "wires": [
+            [
+                "c763f0ce8a4c2d5f"
+            ]
+        ]
+    },
+    {
+        "id": "c763f0ce8a4c2d5f",
         "type": "debug",
         "z": "d5c84b8e4d61993e",
         "name": "debug 1",
@@ -48,7 +138,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 440,
+        "x": 1000,
         "y": 180,
         "wires": []
     }
