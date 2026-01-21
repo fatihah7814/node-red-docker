@@ -68,23 +68,6 @@
         ]
     },
     {
-        "id": "aa163006495ae2ee",
-        "type": "debug",
-        "z": "d5c84b8e4d61993e",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 940,
-        "y": 180,
-        "wires": []
-    },
-    {
         "id": "c2e437f1863147ad",
         "type": "function",
         "z": "d5c84b8e4d61993e",
@@ -96,8 +79,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 180,
+        "x": 380,
+        "y": 140,
         "wires": [
             [
                 "019252cb8b3b8f77"
@@ -118,7 +101,44 @@
         "correl": "",
         "expiry": "",
         "broker": "4441fc2821740b9a",
-        "x": 670,
+        "x": 570,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "51ce02c6b2763693",
+        "type": "mqtt in",
+        "z": "d5c84b8e4d61993e",
+        "name": "",
+        "topic": "plant1/area1/temperature",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "4441fc2821740b9a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 810,
+        "y": 220,
+        "wires": [
+            [
+                "c763f0ce8a4c2d5f"
+            ]
+        ]
+    },
+    {
+        "id": "c763f0ce8a4c2d5f",
+        "type": "debug",
+        "z": "d5c84b8e4d61993e",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
         "y": 180,
         "wires": []
     }
