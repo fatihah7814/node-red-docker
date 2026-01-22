@@ -171,7 +171,7 @@
         "type": "function",
         "z": "d5c84b8e4d61993e",
         "name": "function 2",
-        "func": "const t = msg.payload;   // incoming JSON from MQTT\n\nmsg.measurement = \"temperature\";   // <-- THIS fixes the error\n\nmsg.payload = {\n  sensor_id: t.sensor_id,\n  value: Number(t.temperature),\n  unit: t.unit\n};\n\nmsg.timestamp = t.timestamp; // optional, but good\n\nreturn msg;\n",
+        "func": "const t = msg.payload;   // incoming JSON from MQTT\n\nmsg.measurement = \"temperature\";   // <-- THIS fixes the error\n\nmsg.payload = {\n  sensor_id: t.sensor_id,\n  value: Number(t.temperature),\n  unit: t.unit\n};\n\nmsg.timestamp = t.timestamp; // optional, but good\n\nreturn msg;\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
