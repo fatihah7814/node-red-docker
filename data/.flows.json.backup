@@ -54,6 +54,31 @@
         "rejectUnauthorized": true
     },
     {
+        "id": "df45d6145e15a579",
+        "type": "postgreSQLConfig",
+        "name": "",
+        "host": "postgres",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "iotdb",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "admin",
+        "userFieldType": "str",
+        "password": "admin12345",
+        "passwordFieldType": "str"
+    },
+    {
         "id": "e93b14f74a70e703",
         "type": "inject",
         "z": "d5c84b8e4d61993e",
@@ -74,8 +99,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 230,
-        "y": 180,
+        "x": 350,
+        "y": 260,
         "wires": [
             [
                 "c2e437f1863147ad"
@@ -94,8 +119,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 180,
+        "x": 520,
+        "y": 260,
         "wires": [
             [
                 "019252cb8b3b8f77"
@@ -116,8 +141,8 @@
         "correl": "",
         "expiry": "",
         "broker": "4441fc2821740b9a",
-        "x": 590,
-        "y": 180,
+        "x": 730,
+        "y": 260,
         "wires": []
     },
     {
@@ -133,7 +158,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 770,
+        "x": 990,
         "y": 260,
         "wires": [
             [
@@ -153,7 +178,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 980,
+        "x": 1180,
         "y": 260,
         "wires": [
             [
@@ -176,8 +201,8 @@
         "retentionPolicyV18Flux": "",
         "org": "myorg",
         "bucket": "sensordata",
-        "x": 1180,
-        "y": 260,
+        "x": 1420,
+        "y": 160,
         "wires": []
     },
     {
@@ -193,8 +218,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1180,
-        "y": 360,
+        "x": 1380,
+        "y": 220,
         "wires": []
     }
 ]
